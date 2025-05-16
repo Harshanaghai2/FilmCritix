@@ -1,0 +1,28 @@
+/* base.css - shared styles for all pages */
+body {
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  background: #f8f8fc;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+h1, h2, h3 {
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  font-weight: 700;
+  color: #0f3460;
+}
+
+a {
+  color: #0f3460;
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  text-decoration: underline;
+}
+
+main {
+  min-height: 70vh;
+  display: block;
+}

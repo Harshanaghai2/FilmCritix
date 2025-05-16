@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | FilmCritix</title>
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/login.css" />
+</head>
+<body>
+  <%- include('header.ejs') %>
+
+  <main>
+    <section class="auth-container" aria-label="Login Section">
+      <div class="auth-card">
+        <h2>
+          Login to <span class="highlight">FilmCritix</span>
+        </h2>
+        <form action="/login" method="POST" class="login-form" autocomplete="on" aria-label="Login Form">
+          <label for="email" class="visually-hidden">Email address</label>
+          <input type="email" id="email" name="email" placeholder="Email address" required autocomplete="email" />
+          
+          <label for="password" class="visually-hidden">Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="password" name="password" placeholder="Password" required autocomplete="current-password" />
+            <button type="button" class="toggle-password" aria-label="Show password" tabindex="0">
+              <span aria-hidden="true">&#128065;</span>
+            </button>
+          </div>
+          
+          <button type="submit" class="btn-primary">Login</button>
+        </form>
+        <p class="auth-alt">
+          Don't have an account?
+          <a href="/register">Register here</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <%- include('footer.ejs') %>
+  <script>
+    // Password visibility toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggle = document.querySelector('.toggle-password');
+      const password = document.getElementById('password');
+      if (toggle && password) {
+        toggle.addEventListener('click', function() {
+          if (password.type === 'password') {
+            password.type = 'text';
+            toggle.setAttribute('aria-label', 'Hide password');
+          } else {
+            password.type = 'password';
+            toggle.setAttribute('aria-label', 'Show password');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= title %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/searchResults.css">
+</head>
+<body>
+  <%- include('header.ejs') %>
+
+  <main>
+    <section class="search-results">
+      <h1>Search Results for "<%= query %>"</h1>
+
+      <% if (movies && movies.length > 0) { %>
+        <div class="movie-grid">
+          <% movies.forEach(movie => { %>
+            <article class="movie-card">
+              <img src="<%= movie.Poster === 'N/A' ? '/images/no-poster.jpg' : movie.Poster %>" alt="<%= movie.Title %> Poster" loading="lazy">
+              <h2><%= movie.Title %></h2>
+              <p><strong>Genre:</strong> <%= movie.Genre || 'N/A' %></p>
+              <p><strong>Plot:</strong> <%= movie.Plot || 'No plot available' %></p>
+              <p><strong>IMDB Rating:</strong> <%= movie.imdbRating || 'N/A' %></p>
+              <a href="/movie/<%= movie.imdbID %>" class="btn more-info-btn">More Info</a>
+            </article>
+          <% }) %>
+        </div>
+      <% } else { %>
+        <p class="empty-msg">No results found.</p>
+      <% } %>
+    </section>
+  </main>
+
+  <%- include('footer.ejs') %>
+</body>
+</html>

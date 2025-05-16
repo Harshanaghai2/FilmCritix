@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+  <%- include('header.ejs') %>
+
+  <main class="dashboard">
+    <section class="dashboard-header">
+      <h2>Welcome, <%= user.username %>!</h2>
+      <p>Here is your personalized movie experience.</p>
+    </section>
+    
+    <!-- Watchlist Section -->
+    <section class="dashboard-movies" aria-labelledby="watchlist-heading">
+      <h3 id="watchlist-heading">Your Watchlist</h3>
+      <div class="movie-grid">
+        <% if (watchlistMovies && watchlistMovies.length > 0) { %>
+          <% watchlistMovies.forEach(movie => { %>
+            <article class="movie-item">
+              <img src="<%= movie.poster %>" alt="<%= movie.title %> poster" loading="lazy" />
+              <h4><%= movie.title %></h4>
+              <form action="/movie/<%= movie.id %>/watchlist" method="POST">
+                <button type="submit" class="btn watchlist-btn">
+                  <% if (user.watchlist.includes(movie.id)) { %>
+                    Remove from Watchlist
+                  <% } else { %>
+                    Add to Watchlist
+                  <% } %>
+                </button>
+              </form>
+            </article>
+          <% }) %>
+        <% } else { %>
+          <p class="empty-msg">Your watchlist is empty.</p>
+        <% } %>
+      </div>
+    </section>
+  </main>
+
+  <%- include('footer.ejs') %>
+</body>
+</html>

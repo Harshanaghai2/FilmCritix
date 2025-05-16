@@ -1,0 +1,47 @@
+[
+  {
+    "id": "1",
+    "title": "Inception",
+    "genre": "Sci-Fi",
+    "description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.",
+    "releaseDate": "2010-07-16",
+    "poster": "https://imgs.search.brave.com/ddZ6WYhSueDgncjqBsDLbrpdwSz936w3xKcCVPX5KUc/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9maWxt/YXJ0Z2FsbGVyeS5j/b20vY2RuL3Nob3Av/ZmlsZXMvSW5jZXB0/aW9uLVZpbnRhZ2Ut/TW92aWUtUG9zdGVy/LU9yaWdpbmFsLmpw/Zz92PTE3Mzg5MTI2/NDUmd2lkdGg9MTIw/MA",
+    "trailerUrl": "https://www.youtube.com/watch?v=YoHD9XEInc0"
+  },
+  {
+    "id": "2",
+    "title": "The Dark Knight",
+    "genre": "Action",
+    "description": "When the menace known as The Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham, forcing Batman to join forces with D.A. Harvey Dent and police commissioner James Gordon.",
+    "releaseDate": "2008-07-18",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg",
+    "trailerUrl": "https://www.youtube.com/watch?v=EXeTwQWrcwY"
+  },
+  {
+    "id": "3",
+    "title": "The Shawshank Redemption",
+    "genre": "Drama",
+    "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+    "releaseDate": "1994-09-22",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMDAyY2FhYjctNDc5OS00MDNlLThiMGUtY2UxYWVkNGY2ZjljXkEyXkFqcGc@._V1_SX300.jpg",
+    "trailerUrl": "https://www.youtube.com/watch?v=6hB3S9bIaco"
+  },
+  {
+    "id": "4",
+    "title": "The Matrix",
+    "genre": "Action",
+    "description": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+    "releaseDate": "1999-03-31",
+    "poster": "https://imgs.search.brave.com/Yv_9lBS_gA952z61dUueWQEUJgGweRLweydIlLYYZLc/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NTFrMWVwY2V3S0wu/anBn",
+    "trailerUrl": "https://www.youtube.com/watch?v=vKQi3bBA1y8"
+  },
+  {
+    "id": "5",
+    "title": "Avatar",
+    "genre": "Sci-Fi",
+    "description": "A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
+    "releaseDate": "2009-12-18",
+    "poster": "https://imgs.search.brave.com/6fHiyZ4htBCG5MT34M7L0sijR5tpdVyqJsfYOyFs95U/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXZlLmNv/bS93cC93cDk0MjQ3/NDMuanBn",
+    "trailerUrl": "https://www.youtube.com/watch?v=5PSNL1qE6VY"
+  }
+]

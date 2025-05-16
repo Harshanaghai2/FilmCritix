@@ -1,0 +1,33 @@
+  <link rel="stylesheet" href="/css/base.css">
+  <!-- Page-specific styles -->
+  <link rel="stylesheet" href="/css/about.css">
+<%- include('header.ejs') %>
+
+<main>
+  <section class="about-hero">
+    <h1>About <span class="brand">FILMCRITIX</span></h1>
+    <p class="subtitle">We stream and review top-rated movies.</p>
+  </section>
+
+  <section class="about-content">
+    <div class="about-description">
+      <h2>Our Mission</h2>
+      <p>
+        FILMCRITIX is your go-to destination for discovering, streaming, and reviewing the best movies from around the world. 
+        Our platform combines expert and AI-powered reviews with a vibrant community of movie lovers.
+      </p>
+      <h2>Why Choose Us?</h2>
+      <ul>
+        <li>Curated selection of top-rated films</li>
+        <li>Personalized watchlists and recommendations</li>
+        <li>In-depth reviews and ratings powered by AI</li>
+        <li>Modern, intuitive, and ad-free experience</li>
+      </ul>
+      <a href="/register" class="btn cta-btn">Join the Community</a>
+    </div>
+    <div class="about-image">
+      <img src="/images/about-movie.svg" alt="Movie night illustration" />
+    </div>
+  </section>
+</main>
+<%- include('footer.ejs') %>

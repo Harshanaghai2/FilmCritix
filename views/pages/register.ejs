@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register | FilmCritix</title>
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/register.css" />
+</head>
+<body>
+  <%- include('header.ejs') %>
+
+  <main>
+    <section class="auth-container" aria-label="Register Section">
+      <div class="auth-card">
+        <h2>
+          Create an <span class="highlight">Account</span>
+        </h2>
+        <form action="/register" method="POST" class="register-form" autocomplete="on" aria-label="Register Form">
+          <label for="username" class="visually-hidden">Username</label>
+          <input type="text" id="username" name="username" placeholder="Username" required autocomplete="username" />
+
+          <label for="email" class="visually-hidden">Email address</label>
+          <input type="email" id="email" name="email" placeholder="Email address" required autocomplete="email" />
+
+          <label for="password" class="visually-hidden">Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="password" name="password" placeholder="Password" required autocomplete="new-password" />
+            <button type="button" class="toggle-password" aria-label="Show password" tabindex="0">
+              <span aria-hidden="true">&#128065;</span>
+            </button>
+          </div>
+
+          <button type="submit" class="btn-primary">Register</button>
+        </form>
+        <p class="auth-alt">
+          Already have an account?
+          <a href="/login">Login here</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <%- include('footer.ejs') %>
+  <script>
+    // Password visibility toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggle = document.querySelector('.toggle-password');
+      const password = document.getElementById('password');
+      if (toggle && password) {
+        toggle.addEventListener('click', function() {
+          if (password.type === 'password') {
+            password.type = 'text';
+            toggle.setAttribute('aria-label', 'Hide password');
+          } else {
+            password.type = 'password';
+            toggle.setAttribute('aria-label', 'Show password');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

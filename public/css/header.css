@@ -1,0 +1,123 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.main-header {
+  width: 100%;
+  background: #181a2e;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.6rem 2rem;
+  position: relative;
+}
+
+.nav-logo .brand {
+  color: #ffb347;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  transition: max-height 0.3s;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.07rem;
+  font-weight: 500;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+  background: #ffb347;
+  color: #181a2e;
+  outline: none;
+}
+
+/* Hamburger menu styles */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+.nav-toggle .bar {
+  width: 24px;
+  height: 3px;
+  background: #ffb347;
+  margin: 3px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* Hamburger open animation */
+.nav-toggle.open .bar:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.nav-toggle.open .bar:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle.open .bar:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Responsive styles */
+@media (max-width: 800px) {
+  .nav-bar {
+    flex-wrap: wrap;
+    padding: 0.6rem 1rem;
+  }
+  .nav-links {
+    position: absolute;
+    top: 64px;
+    right: 0;
+    background: #181a2e;
+    flex-direction: column;
+    gap: 0;
+    width: 180px;
+    max-height: 0;
+    overflow: hidden;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    z-index: 100;
+  }
+  .nav-links.nav-open {
+    max-height: 400px;
+    padding: 0.5rem 0;
+    gap: 0.5rem;
+  }
+  .nav-links a {
+    padding: 0.7rem 1.2rem;
+    border-radius: 0;
+    border-bottom: 1px solid #23244a;
+  }
+  .nav-toggle {
+    display: flex;
+  }
+}

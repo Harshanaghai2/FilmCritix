@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <!-- Shared base styles -->
+  <link rel="stylesheet" href="/css/base.css">
+  <!-- Page-specific styles -->
+  <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+  <%- include('header.ejs') %>
+
+  <main>
+    <section class="hero" aria-label="Welcome Section">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <h1>Welcome to <span class="brand">FILMCRITIX</span></h1>
+        <p>Your destination for the best movies, powered by AI reviews and real-time data.</p>
+        <form action="/search" method="GET" class="search-form" aria-label="Movie Search">
+          <input type="text" name="q" placeholder="Search for a movie..." required aria-label="Search movies">
+          <button type="submit">Search</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="featured-movies" aria-labelledby="featured-heading">
+      <h2 id="featured-heading">Featured Movies</h2>
+      <div class="movie-grid">
+        <% movies.forEach(movie => { %>
+          <article class="movie-card animated-card">
+            <img 
+              src="<%= movie.poster && movie.poster.startsWith('http') 
+                      ? movie.poster 
+                      : (movie.poster 
+                          ? '/images/moviePosters/' + movie.poster 
+                          : '/images/no-poster.jpg') %>" 
+              alt="<%= movie.title %> poster"
+              onerror="this.onerror=null;this.src='/images/no-poster.jpg';"
+              loading="lazy"
+            >
+            <h3><%= movie.title %></h3>
+            <div class="movie-actions">
+              <a href="/movie/<%= movie.id %>" class="btn more-info">More Info</a>
+              <a href="https://www.youtube.com/results?search_query=<%= encodeURIComponent(movie.title || movie.Title) %> trailer" 
+                target="_blank" 
+                rel="noopener"
+                class="btn watch-trailer">Watch Trailer</a>
+            </div>
+          </article>
+        <% }) %>
+      </div>
+    </section>
+
+    <section class="trending-movies" aria-labelledby="trending-heading">
+      <h2 id="trending-heading">Trending Movies</h2>
+      <div class="movie-grid">
+        <% trendingMovies.forEach(movie => { %>
+          <article class="movie-card animated-card">
+            <img src="<%= movie.Poster %>" alt="<%= movie.Title %> poster" loading="lazy">
+            <h3><%= movie.Title %></h3>
+            <div class="movie-actions">
+              <a href="/movie/<%= movie.imdbID %>" class="btn more-info">More Info</a>
+              <a href="https://www.youtube.com/results?search_query=<%= encodeURIComponent(movie.title || movie.Title) %> trailer" 
+                target="_blank" 
+                rel="noopener"
+                class="btn watch-trailer">Watch Trailer</a>
+            </div>
+          </article>
+        <% }) %>
+      </div>
+    </section>
+<section class="cta-section">
+  <div class="cta-content">
+    <h2>Ready to explore?</h2>
+    <p>Sign up now to create your watchlist and get personalized AI-powered movie reviews!</p>
+    <a href="/register" class="cta-btn">Get Started</a>
+  </div>
+</section>
+  </main>
+
+  <%- include('footer.ejs') %>
+</body>
+</html>

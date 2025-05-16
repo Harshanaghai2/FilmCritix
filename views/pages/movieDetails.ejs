@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= movie.title %> | FilmCritix</title>
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/movieDetails.css" />
+</head>
+<body>
+  <%- include('header.ejs') %>
+
+  <main>
+    <div class="movie-details-container">
+      <div class="movie-card">
+        <div class="movie-poster">
+          <img src="<%= movie.poster || '/images/no-poster.jpg' %>" alt="<%= movie.title %> Poster" />
+        </div>
+        <div class="movie-info">
+          <h2><%= movie.title %></h2>
+          <p class="meta"><strong>Genre:</strong> <%= movie.genre %></p>
+          <p class="meta"><strong>Director:</strong> <%= movie.director %></p>
+          <p class="meta"><strong>Release Date:</strong> <%= movie.releaseDate %></p>
+          <p class="description"><%= movie.description %></p>
+
+          <hr>
+
+          <!-- Generate AI Review Button -->
+          <button id="generate-review-btn" class="btn generate-ai-review-btn">Generate AI Review</button>
+
+          <!-- Review Output -->
+          <div id="ai-review" class="ai-review"></div>
+          <div id="ai-rating" class="ai-rating"></div>
+
+          <!-- Script to fetch review -->
+          <script>
+            document.getElementById('generate-review-btn').addEventListener('click', async () => {
+              const button = document.getElementById('generate-review-btn');
+              const reviewDiv = document.getElementById('ai-review');
+              const ratingDiv = document.getElementById('ai-rating');
+
+              button.disabled = true;
+              button.textContent = 'Generating review...';
+              reviewDiv.textContent = '';
+              ratingDiv.textContent = '';
+
+              try {
+                const response = await fetch('/movie/<%= movie.id %>/generate-review', { method: 'POST' });
+                const data = await response.json();
+
+                if (response.ok) {
+                  reviewDiv.textContent = `🤖 ${data.review}`;
+                  if (data.rating) {
+                    ratingDiv.textContent = `AI Rating: ${data.rating}/10`;
+                  }
+                } else {
+                  reviewDiv.textContent = '❌ Failed to generate review.';
+                }
+              } catch (err) {
+                reviewDiv.textContent = '❌ Error connecting to server.';
+              }
+
+              button.disabled = false;
+              button.textContent = 'Generate AI Review';
+            });
+          </script>
+
+          <div class="movie-actions">
+            <form method="POST" action="/movie/<%= movie.id %>/watchlist">
+              <button class="btn watchlist-btn">
+                <%= user && user.watchlist.includes(movie.id) ? 'Remove from Watchlist' : 'Add to Watchlist' %>
+              </button>
+            </form>
+          </div>
+
+          <a href="/" class="btn-link">← Back to Home</a>
+        </div>
+      </div>
+
+      <!-- USER REVIEWS SECTION -->
+      <div class="user-reviews-section">
+        <h3>User Reviews</h3>
+        <% if (user) { %>
+          <form method="POST" action="/movie/<%= movie.id %>/review" class="user-review-form">
+            <label for="rating">Your Rating (0-10):</label>
+            <input type="number" name="rating" min="0" max="10" required>
+            <br>
+            <label for="comment">Your Review:</label>
+            <textarea name="comment" rows="3" required></textarea>
+            <br>
+            <button type="submit" class="btn submit-review-btn">Submit Review</button>
+          </form>
+        <% } else { %>
+          <p class="login-to-review"><a href="/login">Log in</a> to submit your review.</p>
+        <% } %>
+
+        <% if (userReviews && userReviews.length > 0) { %>
+          <ul class="user-reviews-list">
+            <% userReviews.forEach(function(review) { %>
+              <li class="user-review-item">
+                <div class="user-review-header">
+                  <span class="user-review-username"><%= review.username %></span>
+                  <span class="user-review-rating">rated <strong><%= review.rating %>/10</strong></span>
+                  <span class="user-review-date"><%= new Date(review.createdAt).toLocaleString() %></span>
+                </div>
+                <div class="user-review-comment"><%= review.comment %></div>
+              </li>
+            <% }); %>
+          </ul>
+        <% } else { %>
+          <p class="no-reviews">No reviews yet. Be the first to review!</p>
+        <% } %>
+      </div>
+      <!-- END USER REVIEWS SECTION -->
+
+    </div>
+  </main>
+
+  <%- include('footer.ejs') %>
+</body>
+</html>

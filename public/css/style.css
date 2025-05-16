@@ -1,0 +1,331 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global Dark Theme */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #1c1c1c;   /* deep charcoal */
+  color: #e6edf3;               /* almost-white text */
+  line-height: 1.6;
+}
+
+/* Links */
+a {
+  color: #f0a500;               /* signature orange */
+  text-decoration: none;
+  transition: color .2s;
+}
+a:hover {
+  color: #d18e00;
+}
+
+/* Header & Footer */
+header, footer {
+  background-color: #111;       /* very dark */
+  padding: 20px;
+  text-align: center;
+}
+header nav a, footer a {
+  margin: 0 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Hero */
+.hero {
+  background: url('/images/hero.jpg') center/cover no-repeat;
+  padding: 100px 20px;
+  text-align: center;
+  background-color: #222;       /* fallback in case image is missing */
+}
+.hero h1 {
+  font-size: 3rem;
+  color: #fff;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+}
+.hero p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+.hero form input {
+  padding: 10px;
+  width: 280px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 8px;
+  background: #333;
+  color: #fff;
+}
+.hero form button {
+  padding: 10px 20px;
+  background: #f0a500;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.hero form button:hover {
+  background: #d18e00;
+}
+
+/* Movie Grid & Cards */
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+  gap: 20px;
+  margin: 30px;
+  background: transparent;  /* Ensure no background overrides */
+}
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;  /* Pushing button to bottom */
+  background: #222;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  transition: transform .2s, box-shadow .2s;
+}
+.movie-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.7);
+}
+.movie-card img {
+  width: 100%;
+  height: auto;  /* Ensure image is contained properly */
+  flex-shrink: 0;
+}
+.movie-card h3 {
+  margin: 12px;
+  color: #fff;
+}
+.movie-card a {
+  display: block;
+  padding: 8px;
+  background: #f0a500;
+  color: #111;
+  text-align: center;
+  font-weight: 600;
+}
+.movie-card a:hover {
+  background: #d18e00;
+}
+
+/* Dashboard */
+.dashboard {
+  padding: 40px 20px;
+  text-align: center;
+}
+.dashboard h2 {
+  color: #f0a500;
+  margin-bottom: 30px;
+}
+
+/* Error Page */
+.error-page {
+  padding: 60px 20px;
+  text-align: center;
+}
+.error-page h1 {
+  font-size: 3rem;
+  color: #f0a500;
+}
+.error-page a {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+/* Auth Forms (Login/Register) */
+.auth-container {
+  min-height: calc(100vh - 100px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.auth-card {
+  background: #161616;
+  padding: 30px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+.auth-card h2 {
+  color: #f0a500;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.auth-card input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 4px;
+  background: #333;
+  color: #e6edf3;
+}
+.auth-card button {
+  width: 100%;
+  padding: 12px;
+  background: #f0a500;
+  border: none;
+  border-radius: 4px;
+  color: #111;
+  font-weight: 600;
+  cursor: pointer;
+}
+.auth-card button:hover {
+  background: #d18e00;
+}
+.auth-card .auth-alt {
+  text-align: center;
+  margin-top: 15px;
+}
+.auth-card .auth-alt a {
+  color: #f0a500;
+}
+
+/* Ensure the movie grid container has no stray white bg */
+.movie-grid {
+  background: transparent;
+  padding: 20px;
+}
+
+/* Make each card a flex column so its content flows nicely */
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;  /* pushes footer/button to bottom */
+  background-color: #222;           /* consistent dark bg */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+  transition: transform .2s, box-shadow .2s;
+}
+
+/* Poster image should fill its container */
+.movie-card img {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* Movie info block gets some breathing room */
+.movie-card .info {
+  padding: 15px;
+  color: #e6edf3;
+  flex-grow: 1;  /* so it expands above the button */
+}
+
+/* “More Info” button stays at the bottom */
+.movie-card .more-info {
+  display: block;
+  text-align: center;
+  padding: 10px 0;
+  background: #f0a500;
+  color: #111;
+  font-weight: 600;
+  text-decoration: none;
+  border-top: 1px solid #d18e00;
+  transition: background .2s;
+  margin-top: auto;  /* key to push it down */
+}
+.movie-card .more-info:hover {
+  background: #d18e00;
+}
+
+/* If you use a button instead of link */
+.movie-card button.more-info {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+}
+
+/* NAVIGATION TABS */
+header nav {
+  background-color: #000; /* black bar */
+  padding: 10px 0;
+}
+header nav a {
+  color: #fff;            /* white text */
+  padding: 8px 16px;
+  margin: 0 4px;
+  background-color: #000; /* black background */
+  border-radius: 4px;
+  transition: background-color .2s, color .2s;
+}
+header nav a:hover,
+header nav a.active {
+  background-color: #f0a500; /* orange */
+  color: #000;                /* black text on hover */
+}
+
+/* SEARCH RESULTS PAGE */
+.search-results {
+  padding: 2rem 1rem;
+}
+.search-results h1 {
+  color: #f0a500;        /* accent orange */
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.search-results .movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+.search-results .movie-card {
+  background: #222;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.search-results .movie-card img {
+  width: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.search-results .movie-card h2 {
+  margin: .75rem 1rem 0;
+  font-size: 1.1rem;
+  color: #e6edf3;
+}
+.search-results .movie-card p {
+  margin: .5rem 1rem;
+  font-size: .9rem;
+  color: #ccc;
+}
+.search-results .movie-card a {
+  display: block;
+  text-align: center;
+  padding: .75rem 0;
+  background: #f0a500;
+  color: #000;
+  font-weight: 600;
+  transition: background .2s;
+  border-top: 1px solid #d18e00;
+}
+.search-results .movie-card a:hover {
+  background: #d18e00;
+}
+
+.watch-trailer {
+  display: inline-block;
+  margin-top: 5px;
+  background-color: #ff4c4c;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.watch-trailer:hover {
+  background-color: #e03e3e;
+}

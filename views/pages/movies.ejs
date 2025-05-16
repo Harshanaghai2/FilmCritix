@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/movies.css">
+</head>
+<body>
+  <%- include('header.ejs') %>
+
+  <main>
+    <section class="movie-list">
+      <h2>All Movies</h2>
+      <div class="filter-bar">
+        <form action="/movies" method="GET" class="filter-form" aria-label="Filter Movies">
+          <label for="genre" class="visually-hidden">Genre</label>
+          <select name="genre" id="genre">
+            <option value="">Select Genre</option>
+            <option value="Action">Action</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Drama">Drama</option>
+            <!-- Add more genres as needed -->
+          </select>
+          <button type="submit" class="btn filter-btn">Filter</button>
+        </form>
+      </div>
+
+      <div class="movie-grid">
+        <% if (movies.length > 0) { %>
+          <% movies.forEach(movie => { %>
+            <article class="movie-card">
+              <img src="<%= movie.poster.startsWith('http') ? movie.poster : '/images/moviePosters/' + movie.poster %>" alt="<%= movie.title %> poster" loading="lazy">
+              <h3><%= movie.title %></h3>
+              <a href="/movie/<%= movie.id %>" class="btn more-info-btn">More Info</a>
+            </article>
+          <% }) %>
+        <% } else { %>
+          <p class="empty-msg">No movies found for the selected genre.</p>
+        <% } %>
+      </div>
+    </section>
+  </main>
+
+  <%- include('footer.ejs') %>
+</body>
+</html>
