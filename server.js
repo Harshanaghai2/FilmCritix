@@ -442,6 +442,11 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || null;
+  next();
+});
+
 app.use(morgan('dev'));
 
 const moviesFilePath = path.join(__dirname, 'data', 'movies.json');
@@ -471,13 +476,21 @@ app.post('/login', async (req, res) => {
       req.session.user = { _id: user._id, username: user.username, email: user.email, watchlist: user.watchlist };
       res.redirect('/dashboard');
     } else {
-      res.status(401).send('Invalid email or password');
+      res.status(401).send('Invalid credentials');
     }
   } catch (err) {
     console.error(err);
     res.status(500).send('Internal Server Error');
   }
 });
+
+app.get('/logout', (req, res) => {
+  req.session.destroy(() => {
+    res.redirect('/');
+  });
+});
+
+
 
 // Register routes
 app.get('/register', (req, res) => res.render('pages/register', { title: 'Register' }));
@@ -488,8 +501,7 @@ app.post('/register', async (req, res) => {
     const existingUser = await User.findOne({ email }).exec();
     if (existingUser) return res.status(400).send('User already exists');
 
-    const hashedPassword = await bcrypt.hash(password, 10); // 🔒 Hash password securely
-
+    const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({ username, email, password: hashedPassword, watchlist: [] });
     await newUser.save();
 
@@ -500,6 +512,7 @@ app.post('/register', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+
 
 // Dashboard route
 app.get('/dashboard', async (req, res) => {

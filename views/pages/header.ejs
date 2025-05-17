@@ -10,7 +10,17 @@
       <a href="/movies">Movies</a>
       <a href="/about">About</a>
       <a href="/contact">Contact</a>
-      <a href="/login">Login</a>
+      <% if (user) { %>
+  <span class="user-info">
+   <img src="https://img.icons8.com/?size=128&id=tZuAOUGm9AuS&format=png" alt="User Icon" class="user-icon" />
+  <%= user.username || user.email %></span>
+
+  <a href="/logout" class="btn logout-btn">Logout</a>
+<% } else { %>
+  <a href="/login">Login</a>
+  <!-- <a href="/register" class="btn register-btn">Register</a> -->
+<% } %>
+
     </div>
     <!-- Hamburger menu for mobile -->
     <button class="nav-toggle" aria-label="Toggle navigation">

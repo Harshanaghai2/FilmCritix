@@ -121,3 +121,76 @@ body {
     display: flex;
   }
 }
+/* User info and auth buttons */
+.user-info {
+  color: #ffd580;
+  font-weight: bold;
+  margin: 0 1rem 0 0.5rem;
+  align-self: center;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+}
+
+.logout-btn {
+  background: #ff4d4d;
+  color: #fff;
+  border-radius: 18px;
+  padding: 0.4rem 1rem;
+  margin-left: 0.5rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.logout-btn:hover, .logout-btn:focus {
+  background: #b30000;
+  color: #fff;
+}
+
+.register-btn {
+  background: #ffb347;
+  color: #181a2e;
+  border-radius: 18px;
+  padding: 0.4rem 1rem;
+  margin-left: 0.5rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.register-btn:hover, .register-btn:focus {
+  background: #ffd580;
+  color: #0f3460;
+}
+
+/* Responsive: user info and buttons stack nicely */
+@media (max-width: 800px) {
+  .user-info {
+    margin: 0.5rem 0 0 0.5rem;
+    font-size: 1rem;
+  }
+  .logout-btn, .register-btn {
+    margin: 0.2rem 0 0 0.5rem;
+    width: 85%;
+    text-align: center;
+  }
+}
+.user-icon {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: #fff;
+  object-fit: cover;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.09);
+}
+
